@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>carousel1</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul,li {
+			list-style: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		.content {
+			position: relative;
+			overflow: hidden;
+			width: 500px;
+			height: 350px;
+			margin: 20px auto;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="content"></div>
+	<script type="text/javascript" src="carousel1.js"></script>
+	<script type="text/javascript">
+		 var data = [
+    'http://cdn.jirengu.com/book.jirengu.com/img/6.jpg',
+    'http://cdn.jirengu.com/book.jirengu.com/img/7.jpg',
+    'http://cdn.jirengu.com/book.jirengu.com/img/8.jpg',
+    'http://cdn.jirengu.com/book.jirengu.com/img/9.jpg'
+  	]
+  	//console.log(Carousel)
+		new Carousel(document.querySelector('.content'),data)
+	</script>
+</body>
+</html>
