@@ -33,7 +33,7 @@ Carousel.prototype.init = function () {
   this.gapWidth = Math.floor(this.imgWidth/12)
 
   for(var i=0; i<this.imgCount; i++){
-    this.imgs[i].style.left = this.gapWidth*i + 'px'
+    this.imgs[i].style.left = i*(this.imgWidth)/this.imgCount + 'px'
   }
 
   this.bind()
@@ -51,7 +51,11 @@ Carousel.prototype.bind = function () {
 					startMove(_this.imgs[i],'left',_this.imgWidth - _this.imgCount*_this.gapWidth+i*_this.gapWidth);
 				}
 			}
-    
+    }
+    _this.imgs[i].onmouseleave = function () {
+      for(var i=0; i<_this.imgCount; i++){
+          startMove(_this.imgs[i],'left',i*parseInt((_this.imgWidth)/_this.imgCount))
+      }
     }
   }
 }
