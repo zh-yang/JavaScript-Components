@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>lazy-load</title>
+</head>
+<style type="text/css">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .wrap{
+    width: 620px;
+    margin: 50px auto 0;
+  }
+  .ct {
+    list-style:none;
+    margin-left:-20px;
+    margin-bottom:-20px;
+  }
+  .ct::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .ct>li{
+    width: 300px;
+    float:left;
+    padding-left:20px;
+    padding-bottom:20px;
+  }
+  .ct img {
+    display: block;
+    width: 100%;
+    height: 240px;
+  }
+  h2,h3,p {
+    margin-bottom: 50px;
+  }
+</style>
+<body>
+  <div class="wrap">
+    <ul class="ct">
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+      <li><a href=""><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/200.gif" alt=""></a></li>
+    </ul>
+    <h3>我一曝光就增加内容</h3>
+    <p>我可以增加3次</p>
+    <h2>我只增加1次</h2>
+  </div>
+  <script type="text/javascript" src="exposure.js"></script>
+  <script type="text/javascript">
+    var dataSrc = [
+      'http://cdn.jirengu.com/book.jirengu.com/img/1.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/2.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/3.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/4.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/5.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/6.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/7.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/8.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/9.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/10.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/11.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/12.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/13.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/14.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/15.jpg',
+      'http://cdn.jirengu.com/book.jirengu.com/img/16.jpg' 
+    ]
+    document.$ = function (ele){
+    	return this.querySelector(ele)
+    }
+    document.$$ = function (ele){
+    	return this.querySelectorAll(ele)
+    }
+    var srcOld = document.$('.ct img').getAttribute('src')
+    function random(){
+      return Math.floor(Math.random()*17)
+    }
+    function callBack1(node) {
+      if(document.$.call(node,'img').getAttribute('src') === srcOld){
+        document.$.call(node,'img').setAttribute('src',dataSrc[random()])
+      }
+    }
+    function callBack2(node) {
+      node.innerText = node.innerText+' hello world'
+    }
+    
+    for(var i=0; i<document.$$('.ct>li').length; i++){
+    	new Exposure(document.$$('.ct>li')[i],callBack1)
+    }
+    var ex1 = new Exposure(document.$('h3'),callBack2)
+    var ex2 = new Exposure(document.$('p'),callBack2,3)
+    var ex3 = new Exposure(document.$('h2'),callBack2,1)
+  </script>
+</body>
+</html>
